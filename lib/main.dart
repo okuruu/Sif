@@ -4,14 +4,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:kenapa/common/routes/routes.dart';
 import 'package:kenapa/common/theme/dark_theme.dart';
 import 'package:kenapa/common/theme/light_theme.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kenapa/feature/welcome/pages/welcome_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
+    options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -21,12 +22,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Kenapa',
-      theme: lightTheme(),
-      darkTheme: darkTheme(),
-      themeMode: ThemeMode.system,
-      home: const WelcomePage(),
-      onGenerateRoute: Routes.onGenerateRoute);
+        debugShowCheckedModeBanner: false,
+        title: 'Kenapa',
+        theme: lightTheme(),
+        darkTheme: darkTheme(),
+        themeMode: ThemeMode.system,
+        home: const WelcomePage(),
+        onGenerateRoute: Routes.onGenerateRoute);
   }
 }

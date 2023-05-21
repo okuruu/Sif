@@ -1,41 +1,48 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kenapa/common/helper/show_alert_dialog.dart';
 import 'package:kenapa/common/utils/coloors.dart';
 import 'package:kenapa/common/widgets/custom_elevated_button.dart';
 import 'package:kenapa/common/widgets/custom_icon_button.dart';
+import 'package:kenapa/feature/auth/controller/auth_controller.dart';
 import 'package:kenapa/feature/auth/widgets/custom_text_field.dart';
 import 'package:kenapa/common/extension/custom_theme_extension.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  ConsumerState<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends ConsumerState<LoginPage> {
   late TextEditingController countryNameController;
   late TextEditingController countryCodeController;
   late TextEditingController phoneNumberController;
 
   sendCodeToPhone() {
-    final phone = phoneNumberController.text;
-    final name = countryNameController.text;
+    final phoneNumber = phoneNumberController.text;
+    final countryName = countryNameController.text;
+    final countryCode = countryCodeController.text;
 
-    if (phone.isEmpty) {
+    if (phoneNumber.isEmpty) {
       return showAlertDialog(
           context: context, message: 'Masukkan nomor ponsel anda');
     }
 
-    if (phone.length < 9) {
+    if (phoneNumber.length < 9) {
       return showAlertDialog(
           context: context,
           message:
               'Nomor ponsel yang ada masukkan terlalu pendek. Mohon masukkan beserta kode negara yang benar.');
-    } else if (phone.length > 10) {
+    } else if (phoneNumber.length > 10) {
       return showAlertDialog(context: context, message: 'Nomor ponsel anda');
     }
+
+    //
+    ref.read(authControllerProvider).sendSmsCode(
+        context: context, phoneNumber: '+$countryCode$phoneNumber');
   }
 
   showCountryCodePicker() {
@@ -61,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                     borderSide: BorderSide(color: Coloors.greenDark)))),
         onSelect: (country) {
           countryNameController.text = country.name;
-          countryCodeController.text = country.countryCode;
+          countryCodeController.text = country.phoneCode;
         });
   }
 
