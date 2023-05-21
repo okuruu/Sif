@@ -4,7 +4,10 @@ import 'package:kenapa/common/widgets/custom_icon_button.dart';
 import 'package:kenapa/feature/auth/widgets/custom_text_field.dart';
 
 class VerificationPage extends StatefulWidget {
-  const VerificationPage({super.key});
+  const VerificationPage(
+      {super.key, required this.verificationId, required this.phoneNumber});
+  final String verificationId;
+  final String phoneNumber;
 
   @override
   State<VerificationPage> createState() => _VerificationPageState();
@@ -98,12 +101,12 @@ class _VerificationPageState extends State<VerificationPage> {
                     Icons.phone,
                     color: context.theme.greyColor,
                   ),
-                  const SizedBox(width: 20,),
+                  const SizedBox(
+                    width: 20,
+                  ),
                   Text(
                     'Call Odi for help',
-                    style: TextStyle(
-                      color: context.theme.greyColor
-                    ),
+                    style: TextStyle(color: context.theme.greyColor),
                   )
                 ],
               )

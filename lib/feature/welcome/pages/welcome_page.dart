@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kenapa/common/routes/routes.dart';
 import 'package:kenapa/common/widgets/custom_elevated_button.dart';
 import 'package:kenapa/common/extension/custom_theme_extension.dart';
 import 'package:kenapa/feature/welcome/widgets/language_button.dart';
@@ -6,6 +7,11 @@ import 'package:kenapa/feature/welcome/widgets/privacy_and_terms.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
+
+  navigateToLoginPage(context) {
+    Navigator.of(context)
+        .pushNamedAndRemoveUntil(Routes.login, (route) => false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +36,10 @@ class WelcomePage extends StatelessWidget {
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
               const PrivacyAndTerms(),
-              CustomElevatedButton(onPressed: (){},text: 'Setujui dan Lanjutkan',),
+              CustomElevatedButton(
+                onPressed: () => navigateToLoginPage(context) ,
+                text: 'Setujui dan Lanjutkan',
+              ),
               const SizedBox(height: 50),
               const LanguageButton()
             ],

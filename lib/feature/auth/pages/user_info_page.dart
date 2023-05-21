@@ -18,8 +18,10 @@ class _UserInfoPageState extends State<UserInfoPage> {
         backgroundColor: Theme.of(context).backgroundColor,
         elevation: 0,
         title: Text(
-          'Profile Info',
-          style: TextStyle(color: context.theme.authAppbarTextColor),
+          'Informasi Profil',
+          style: TextStyle(
+              color: context.theme.authAppbarTextColor,
+              fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),

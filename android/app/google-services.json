@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "873847844824",
+    "project_id": "sif-messenger",
+    "storage_bucket": "sif-messenger.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873847844824:android:86ee0a4be730931d438cad",
+        "android_client_info": {
+          "package_name": "com.example.kenapa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "873847844824-0qr79lfn5dlde3tdc42lgd273rrhg83q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcE-YnsY26Y2VcqvbKps8kQHCPSvzljDE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "873847844824-0qr79lfn5dlde3tdc42lgd273rrhg83q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
